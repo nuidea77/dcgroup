@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'action'                 => 'Action',
-    'actions'                => 'Үйлдэл',
+    'action'                 => 'Үйлдэл',
+    'actions'                => 'Үйлдэлүүд',
     'add'                    => 'Үүсгэх',
     'add_folder'             => 'Add Folder',
     'add_new'                => 'Нэмэх',

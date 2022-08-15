@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
+use TCG\Voyager\Facades\Voyager;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('setlocale/{locale}',function($lang){
+    Session::put('locale',$lang);
+    return redirect()->back();
 });
 
-
+Route::group(['middleware'=>'language'],function ()
+{
+Route::get('/', [MainController::class, 'index']);
+Route::get('/news/{id}', [NewsController::class, 'view']);
+Route::get('/blog', [NewsController::class, 'index']);
+Route::get('/news/category/{id}', [NewsController::class, 'category']);
+Route::get('/contact', [PagesController::class, 'contact']);
+Route::get('/about', [PagesController::class, 'about']);
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+        Voyager::routes();
+    });
 });

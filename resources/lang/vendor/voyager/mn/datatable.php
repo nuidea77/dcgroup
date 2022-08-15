@@ -14,10 +14,10 @@ return [
     'sSearch'         => 'Search:',
     'sZeroRecords'    => 'No matching records found',
     'oPaginate'       => [
-        'sFirst'    => 'First',
-        'sLast'     => 'Last',
-        'sNext'     => 'Next',
-        'sPrevious' => 'Previous',
+        'sFirst'    => 'Эхнийх',
+        'sLast'     => 'Сүүлийнх',
+        'sNext'     => 'Дараах',
+        'sPrevious' => 'Өмнөх',
     ],
     'oAria' => [
         'sSortAscending'  => ': activate to sort column ascending',

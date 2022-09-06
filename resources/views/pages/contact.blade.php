@@ -5,9 +5,8 @@
     <div class="container">
         <div class="row align-items-stretch justify-content-center small-screen">
             <div class="col-12 col-xl-6 col-lg-7 col-md-8 position-relative page-title-extra-small text-center d-flex justify-content-center flex-column">
-                <h2 class="text-white alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">Contact us</h2>
+                <h2 class="text-white alt-font font-weight-500 letter-spacing-minus-1px line-height-50 sm-line-height-45 xs-line-height-30 no-margin-bottom">@lang("texts.contact-us")</h2>
             </div>
-            <div class="down-section text-center"><a href="#down-section" class="section-link"><i class="ti-arrow-down icon-extra-small text-white bg-transparent-black padding-15px-all xs-padding-10px-all border-radius-100"></i></a></div>
         </div>
     </div>
 </section>
@@ -15,33 +14,91 @@
     <div class="container">
         <div class="z-index-6 position-relative overlap-section-three-fourth bg-white box-shadow-large padding-8-rem-all md-padding-5-rem-all xs-padding-4-rem-tb xs-padding-2-rem-lr wow animate__fadeIn" data-wow-delay="0.4s" style="margin-top: -123.399px; visibility: visible; animation-delay: 0.4s; animation-name: fadeIn;">
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-6 col-lg-7 text-center margin-4-half-rem-bottom md-margin-3-rem-bottom">
-                    <span class="alt-font letter-spacing-minus-1-half text-extra-medium d-block margin-5px-bottom">Fill out the form and we'll be in touch soon!</span>
-                    <h4 class="alt-font font-weight-600 text-extra-dark-gray">How we can help you?</h4>
+                <div class="col-12 col
+                -xl-6 col-lg-7 text-center margin-4-half-rem-bottom md-margin-3-rem-bottom">
+
+                    <h4 class="alt-font font-weight-600 text-extra-dark-gray">@lang("texts.cuft")</h4>
+                    <p class="alt-font letter-spacing-minus-1-half text-extra-medium d-block margin-5px-bottom">@lang("texts.cufd") </p>
                 </div>
                 <div class="col-12">
-                    <!-- start contact form -->
-                    <form action="email-templates/contact-form.php" method="post" novalidate="">
-                        <div class="row row-cols-1 row-cols-md-2">
-                            <div class="col margin-4-rem-bottom sm-margin-25px-bottom">
-                                <input class="medium-input bg-white margin-25px-bottom required" type="text" name="name" placeholder="Your name">
-                                <input class="medium-input bg-white margin-25px-bottom required" type="email" name="email" placeholder="Your email address">
-                                <input class="medium-input bg-white mb-0" type="tel" name="phone" placeholder="Your mobile">
-                            </div>
-                            <div class="col margin-4-rem-bottom sm-margin-20px-bottom">
-                                <textarea class="medium-textarea bg-white h-200px" rows="6" name="comment" placeholder="Your message"></textarea>
-                            </div>
-                            <div class="col text-start sm-margin-25px-bottom">
-                                <input type="checkbox" name="terms_condition" id="terms_condition" value="1" class="terms-condition d-inline-block align-top w-auto mb-0 margin-5px-top margin-10px-right">
-                                <label for="terms_condition" class="text-small d-inline-block align-top w-85 md-w-90 xs-w-85">I accept the terms &amp; conditions and I understand that my data will be hold securely in accordance with the <a href="privacy.html" target="_blank" class="text-decoration-underline text-extra-dark-gray">privacy policy</a>.</label>
-                            </div>
-                            <div class="col text-center text-md-end">
-                                <button id="project-contact-us-button" class="btn btn-medium btn-fast-blue mb-0 submit" type="submit">Send Message</button>
-                            </div>
+                    <div class="card-body">
+
+
+
+                        @if(Session::has('success'))
+
+                        <div class="alert alert-success">
+
+                            {{Session::get('success')}}
+
                         </div>
-                        <div class="form-results d-none"></div>
-                    </form>
-                    <!-- end contact form -->
+
+                    @endif
+
+
+
+                        <form method="POST" action="{{ route('contact.us.store') }}" id="contactUSForm">
+
+                            {{ csrf_field() }}
+
+
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text"  required=""class="medium-input bg-white margin-25px-bottom required" name="name" class="form-control" placeholder="@lang("texts.name")" value="{{ old('name') }}">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required="" class="medium-input bg-white margin-25px-bottom required" name="email" class="form-control" placeholder="@lang("texts.email")" value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required="" class="medium-input bg-white margin-25px-bottom required" name="phone" class="form-control" placeholder="@lang("texts.phone")" value="{{ old('phone') }}">
+                                        @if ($errors->has('phone'))
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea name="message" required="" class="medium-textarea bg-white h-200px" rows="6" placeholder="@lang("texts.message")" class="form-control">{{ old('message') }}</textarea>
+                                        @if ($errors->has('message'))
+                                            <span class="text-danger">{{ $errors->first('message') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="check" id="terms_condition" required=""  value="1" class="terms-condition d-inline-block align-top w-auto mb-0 margin-5px-top margin-10px-right">
+                                        <label for="terms_condition" class="text-small d-inline-block align-top w-85 md-w-90 xs-w-85">@lang("texts.checkbox")</label>
+                                        @if ($errors->has('check'))
+                                        <p class="text-danger">{{ $errors->first('check') }}</p>
+                                    @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-center text-md-end">
+                                        <button class="btn btn-fast-blue btn-submit">@lang("texts.send")</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -64,8 +121,8 @@
                         <i class="fas fa-map-marker-alt icon-extra-medium text-fast-blue margin-30px-bottom md-margin-15px-bottom sm-margin-10px-bottom"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">LOCATION</span>
-                        <p class="d-inline-block w-70 lg-w-90 md-w-60 sm-w-80 xs-w-100">Ulaanbaatar Khan-uul, 15 Khoroo, Zaisan bridge, Tokyo tower</p>
+                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">@lang("texts.location-text")</span>
+                        <p class="d-inline-block w-70 lg-w-90 md-w-60 sm-w-80 xs-w-100">@lang("texts.location")</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +135,7 @@
                         icon-extra-medium text-fast-blue margin-30px-bottom md-margin-15px-bottom sm-margin-10px-bottom"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">Let's Talk</span>
+                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">@lang("texts.phoneb")</span>
                         <p><a href="tel:+97677475555" class="text-sky-blue-hover"> +976 77475555</a><br><a href="tel:+97677545555" class="text-sky-blue-hover"> +976 77545555</a></p>
                     </div>
                 </div>
@@ -91,7 +148,7 @@
                         <i class="fas fa-envelope icon-extra-medium text-fast-blue margin-30px-bottom md-margin-15px-bottom sm-margin-10px-bottom"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">E-mail Us</span>
+                        <span class="alt-font font-weight-500 margin-10px-bottom d-block text-extra-dark-gray text-small text-uppercase">@lang("texts.emailb")</span>
                         <p><a href="mailto:info@dcgroup.mn" class="text-sky-blue-hover">info@dcgroup.mn</a><br><a href="mailto:davaa@dcgroup.mn" class="text-light-blue text-sky-blue-hover">davaa@dcgroup.mn</a></p>
                     </div>
                 </div>

@@ -513,6 +513,7 @@
     }),
     t(".fullscreen-hover-list .hover-list-item").length > 0)
   ) {
+
     var u = h ? "click" : "mouseover";
     t(document).on(
       u,
@@ -1678,4 +1679,30 @@
         t(".theme-demos").hasClass("active") && t(".all-demo").trigger("click");
     }),
     t(window).on("scroll", D);
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+
+        spaceBetween: 30,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+        },
+
+      });
+
+
 })(jQuery);

@@ -13,8 +13,10 @@
         <!-- style sheets and font icons  -->
         <link rel="stylesheet" type="text/css" href="{{asset('css/font-icons.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/theme-vendors.min.css')}}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
         <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}" />
+
     </head>
     <body  data-mobile-nav-style="classic">
         @include('layout.header')
@@ -24,14 +26,15 @@
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="feather icon-feather-arrow-up"></i></a>
         <!-- end scroll to top -->
         <!-- javascript -->
-
         <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <script type="text/javascript" src="{{asset('js/theme-vendors.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
         <script>
             $( window ).on( 'load', function () {
 
             });
+
         </script>
 
     <body>

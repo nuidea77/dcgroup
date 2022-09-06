@@ -12,51 +12,46 @@
         </div>
     </div>
 </section>
-<section id="blog" class="padding-four-lr pt-0 xl-padding-two-lr sm-padding-two-lr xs-no-padding-lr">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 blog-content">
-                <ul class="blog-metro margin-50px-top blog-wrapper grid grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-large" style="position: relative; height: 1299.62px;">
+<section id="blog" class=" pt-0 padding-five-lr lg-no-padding-lr">
+
+    <div class="container padding-50px-top">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-12 col-lg-12 col-sm-10 blog-content lg-no-padding-lr">
+                <ul class="blog-simple blog-wrapper grid grid-2col xl-grid-2col lg-grid-2col md-grid-1col sm-grid-1col xs-grid-1col gutter-double-extra-large" style="position: relative; height: 3064.5px;">
                     <li class="grid-sizer"></li>
                     <!-- start blog item -->
                     @if(isset($newslist))
                     @foreach($newslist as $data)
-                    <li class="grid-item  wow animate__fadeIn last-paragraph-no-margin" style="position: absolute; left: 50.0002%; top: 324.906px; animation: 0s ease 0s 1 normal none running none;">
-                        <div class="blog-post">
-                            <div class="blog-post-image bg-dark-slate-blue">
-                                <img src="{{Voyager::image($data->image)}}" alt="" data-no-retina="">
-                                <div class="blog-overlay"></div>
+                    <li class="grid-item wow animate__fadeIn" style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                        <div class="blog-post box-shadow-small border-radius-6px">
+                            <div class="blog-post-image cover-background xs-h-250px" style="background-image: url('{{Voyager::image($data->image)}}')">
+                                <a href="/news/{{ $data->id }}" class="blog-post-image-overlay bg-dark-slate-blue"></a>
                             </div>
-                            <div class="post-details d-flex flex-column align-item-start padding-3-half-rem-all xl-padding-3-rem-all">
-                                <div class="mb-auto w-100">
-                                    <a href="/news/category/{{ $data->category_id }}" class="blog-category alt-font">{{ $data->category->name }}</a>
-                                </div>
-                                <div class="align-self-end w-100">
-                                    <a href="/news/{{ $data->id }}" class="alt-font font-weight-500 text-small d-inline-block text-white text-uppercase opacity-6 margin-10px-bottom">{{ date('d-m-Y', strtotime($data->created_at)) }}</a>
-                                    <a href="/news/{{ $data->id }}" class="alt-font text-white text-extra-large mb-0 d-block w-85 xl-w-100">{{ $data->getTranslatedAttribute('title') }}</a>
-                                </div>
+                            <div class="post-details bg-white padding-3-half-rem-all lg-padding-2-half-rem-all md-padding-3-half-rem-all">
+                                <a href="/news/category/{{ $data->category_id }}" class="blog-category alt-font text-extra-dark-gray border-color-black-transparent bg-white align-self-start margin-4-half-rem-bottom xs-margin-2-half-rem-bottom">{{ $data->category->name }}</a>
+                                <a href="/news/{{ $data->id }}" class="text-row-2 font-weight-500 text-large line-height-24px text-extra-dark-gray margin-15px-bottom xs-margin-10px-bottom">{{ $data->getTranslatedAttribute('title') }}</a>
+                                <p class="text-row-2">{{ $data->getTranslatedAttribute('excerpt') }}</p>
+                                <a href="/news/{{ $data->id }}" class="alt-font font-weight-500 text-small text-fast-blue text-uppercase align-self-start">@lang('texts.more')</a>
                             </div>
                         </div>
                     </li>
                     @endforeach
                     @endif
                     <!-- end blog item -->
+
+
                 </ul>
-                <!-- start pagination -->
-                <div class="col-12  d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn" style="visibility: visible; animation-name: fadeIn;">
-                    {{ $newslist->render() }}
-                    {{-- <ul class="pagination pagination-style-01 text-small font-weight-500 align-items-center">
-                        <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-left icon-extra-small d-xs-none"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#">01</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">02</a></li>
-                        <li class="page-item"><a class="page-link" href="#">03</a></li>
-                        <li class="page-item"><a class="page-link" href="#">04</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-right icon-extra-small  d-xs-none"></i></a></li>
-                    </ul> --}}
-                </div>
-                <!-- end pagination -->
+
             </div>
+
         </div>
     </div>
+
+
+    <div class="col-12 d-flex justify-content-center margin-7-half-rem-top md-margin-5-rem-top wow animate__fadeIn" style="visibility: visible; animation-name: fadeIn;">
+        {{-- {{ $newslist->render() }} --}}
+    </div>
+
 </section>
+
 @stop

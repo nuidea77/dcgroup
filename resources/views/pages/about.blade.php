@@ -36,11 +36,11 @@
             </div>
             <div class="col-12 col-lg-6  position-relative margin-70px-top lg-margin-30px-top md-margin-50px-bottom wow animate__fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
                 <div class="w-70 border-radius-6px overflow-hidden position-relative">
-                    <img src="images/our-process-02.jpg" alt="" data-no-retina="">
+                    <img src="images/ddd.png" alt="" data-no-retina="">
                     <div class="opacity-extra-medium bg-fast-blue"></div>
                 </div>
                 <div class="position-absolute right-15px bottom-0px w-70" data-parallax-layout-ratio="1.1" style="">
-                    <img class="border-radius-6px" src="images/our-process-01.jpg" alt="" data-no-retina="">
+                    <img class="border-radius-6px" src="images/ddd1.png" alt="" data-no-retina="">
                 </div>
             </div>
         </div>
